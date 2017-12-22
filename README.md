@@ -20,3 +20,9 @@ Future work:
 - Create network graphs based on various search sets
 - Compare a set of PMIDs against a search
 
+Todo:
+- expand README to include descriptions of each function and how to use them
+- add examples.R script with working example
+- create rnotebook for examples.R
+- remove playingaround file
+
