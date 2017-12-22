@@ -19,6 +19,9 @@ Future work:
 - Find collaborators per search set
 - Create network graphs based on various search sets
 - Compare a set of PMIDs against a search
+- build functions to export results in various formats
+  - csv
+  - bibtex
 
 Todo:
 - expand README to include descriptions of each function and how to use them
