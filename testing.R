@@ -10,18 +10,30 @@ library(RSQLite)
 
 # Get initial metadata for a query x ---
 
-x = 'librarian'
-librarian <- RetrieveArticleData(x,2000,2016,3000)
-librarian_meta <- RetrieveArticleMetadata(librarian)
+x = 'reproducibility[ti]'
+data <- RetrieveArticleData(x,2010,2016,4000)
+data_meta <- RetrieveArticleMetadata(data)
 
-# ArticlesFreqYear 
+# ArticlesFreqYear
 
-ArticlesFreqYear(librarian_meta)
+ArticlesFreqYear(data_meta)
+
+
 
 # PMStatusByYearPlot -------
 # Working
 
-PMStatusByYearPlot(librarian)
+PMStatusByYearPlot(data)
+
+# publication type
+# need to turn this into a usable function
+# graph and export datafile
+
+PubType <- PublicationType(data)
+
+# JournalTitles
+
+jtitles <- JournalTitles(data)
 
 # Get MeSH NOT WORKING YET
 

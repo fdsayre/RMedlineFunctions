@@ -47,12 +47,21 @@ ArticlesFreqYear <-function(x) {
 #Grants <- GrantID(records)
 #Grants <- as.data.frame(na.omit(Grants))
 
-## Journal Titles------
+## Function: JournalTitles -----
+# Journal Titles
+
+JournalTitles <- function(x) {
+  Jtitles <- ISOAbbreviation(x)
+  Jtitles <- as.data.frame(Jtitles)
+  return(Jtitles)
+  
+}
 
 #ISO <- ISOAbbreviation(records)
 #ISO <- as.data.frame(na.omit(ISO))
 
-# PubmedStatus-------
+# PubmedStatusData-------
+# Get data file with PM Status
 
 #PMStatus <- PublicationStatus(records)
 #PMStatus <- as.data.frame(PMStatus)
@@ -61,7 +70,7 @@ ArticlesFreqYear <-function(x) {
 #  geom_bar()
 
 # Function: PMStatusByYearPlot-------
-# Create a plot of Pubmed Status by year
+# Create a stacked bar plot of Pubmed Status by year
 # x = pubmed datafile
 
 
@@ -71,3 +80,12 @@ PMStatusByYearPlot <- function(x) {
     geom_bar()
   return(gPMStatusYear_Plot)
 }
+
+
+# Function to find common MeSH across a search set, e.g. what MeSH are present in all results?
+
+
+
+# Function to compare a set of PMIDs against a search
+
+
