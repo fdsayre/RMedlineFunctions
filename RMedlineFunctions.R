@@ -27,7 +27,7 @@ RetrieveArticleMetadata <- function(x) {
   return(pubmed_metadata)
 }
 
-# function: GraphArticlesFreqYes
+# function: GraphArticlesFreqYears
 # from initial datafile, create a graph a graph of the number of articles published each year
 # x = data frame with 'Year' variable
 
@@ -38,15 +38,6 @@ ArticlesFreqYear <-function(x) {
   return(ArticlesFreqPerYear_Plot)
 }
 
-### function: Retrieve MeSH-----
-
-
-
-## grant ID--------
-
-#Grants <- GrantID(records)
-#Grants <- as.data.frame(na.omit(Grants))
-
 ## Function: JournalTitles -----
 # Journal Titles
 
@@ -56,18 +47,6 @@ JournalTitles <- function(x) {
   return(Jtitles)
   
 }
-
-#ISO <- ISOAbbreviation(records)
-#ISO <- as.data.frame(na.omit(ISO))
-
-# PubmedStatusData-------
-# Get data file with PM Status
-
-#PMStatus <- PublicationStatus(records)
-#PMStatus <- as.data.frame(PMStatus)
-
-#ggplot(PMStatus, aes(x = PMStatus)) +
-#  geom_bar()
 
 # Function: PMStatusByYearPlot-------
 # Create a stacked bar plot of Pubmed Status by year
@@ -80,6 +59,31 @@ PMStatusByYearPlot <- function(x) {
     geom_bar()
   return(gPMStatusYear_Plot)
 }
+
+
+
+### function: Retrieve MeSH-----
+
+
+
+## grant ID--------
+
+#Grants <- GrantID(records)
+#Grants <- as.data.frame(na.omit(Grants))
+
+
+
+#ISO <- ISOAbbreviation(records)
+#ISO <- as.data.frame(na.omit(ISO))
+
+# PubmedStatusData-------
+# Get data file with PM Status
+
+#PMStatus <- PublicationStatus(records)
+#PMStatus <- as.data.frame(PMStatus)
+
+#ggplot(PMStatus, aes(x = PMStatus)) +
+#  geom_bar()
 
 
 # Function to find common MeSH across a search set, e.g. what MeSH are present in all results?

@@ -77,12 +77,9 @@ ggplot(count, aes(x = year, y = Freq)) +
   geom_bar(stat = "identity")
 
 
-# Text Mining https://www.r-bloggers.com/how-to-search-pubmed-with-rismed-package-in-r/
-
-
 
 # Okay, go back and do basic retrieval based on https://amunategui.github.io/pubmed-query/
-# This is good
+# This works
 
 search_topic <- 'myasthenia gravis'
 
