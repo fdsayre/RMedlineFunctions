@@ -1,7 +1,10 @@
+# These functions use the library RISmed
+# https://cran.r-project.org/web/packages/RISmed/RISmed.pdf
+# The idea is to extend RISmed by building a standard set
+# of functions for commonly done tasks
+
 
 # function: RetrieveArticleData ------
-# https://www.statmethods.net/management/userfunctions.html
-
 # retrieve list of PMIDs and then basic article metadata
 # x <- 'search query'
 # y = mindate
@@ -15,16 +18,17 @@ RetrieveArticleData <- function(x,y,z,a) {
 }
 
 # function: RetrieveArticleMetadata-----
-# from initial datafile, including Title, Abstract, Year
+# from initial datafile, get metadata, including Title, Abstract, Year
+# This creates a usable dataframe for analysis
 # x = pubmed_data
 
 RetrieveArticleMetadata <- function(x) {
-  pubmed_metadata <- data.frame('Title'=ArticleTitle(f_records),'Abstract'=AbstractText(f_records),"Year"=YearPubmed(f_records))
+  pubmed_metadata <- data.frame('Title'=ArticleTitle(x),'Abstract'=AbstractText(x),"Year"=YearPubmed(x))
   return(pubmed_metadata)
 }
 
-# function: ArticlesFreqYes
-# Graph a graph of the number of articles published each year
+# function: GraphArticlesFreqYes
+# from initial datafile, create a graph a graph of the number of articles published each year
 # x = data frame with 'Year' variable
 
 ArticlesFreqYear <-function(x) {
@@ -36,9 +40,7 @@ ArticlesFreqYear <-function(x) {
 
 ### function: Retrieve MeSH-----
 
-#MeSH <- Mesh(records)
 
-#MeSH_Table <- as.data.frame(MeSH)
 
 ## grant ID--------
 
@@ -58,9 +60,14 @@ ArticlesFreqYear <-function(x) {
 #ggplot(PMStatus, aes(x = PMStatus)) +
 #  geom_bar()
 
-# PubmedStatusByYear-------
+# Function: PMStatusByYearPlot-------
+# Create a plot of Pubmed Status by year
+# x = pubmed datafile
 
-#PMStatusYear <- data.frame('Year'=YearPubmed(records),'PubStatus'= PublicationStatus(records))
 
-#ggplot(PMStatusYear, aes(x = Year, fill = PubStatus)) +
-#  geom_bar()
+PMStatusByYearPlot <- function(x) {
+  PMStatusYear <- data.frame('Year'=YearPubmed(x),'PubStatus'= PublicationStatus(x))
+  gPMStatusYear_Plot <- ggplot(PMStatusYear, aes(x = Year, fill = PubStatus)) +
+    geom_bar()
+  return(gPMStatusYear_Plot)
+}

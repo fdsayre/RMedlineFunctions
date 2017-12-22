@@ -2,10 +2,35 @@
 
 # load libraries ------
 
+source("RMedlineFunctions.R")
 library(RISmed)
 library(ggplot2)
 library(dplyr)
 library(RSQLite)
+
+# Get initial metadata for a query x ---
+
+x = 'librarian'
+librarian <- RetrieveArticleData(x,2000,2016,3000)
+librarian_meta <- RetrieveArticleMetadata(librarian)
+
+# ArticlesFreqYear 
+
+ArticlesFreqYear(librarian_meta)
+
+# PMStatusByYearPlot -------
+# Working
+
+PMStatusByYearPlot(librarian)
+
+# Get MeSH NOT WORKING YET
+
+LibrarianMeSH <- Mesh(librarian)
+LibrarianMeSH <- as.data.frame(LibrarianMeSH)
+
+require(reshape2)
+LibrarianMeSH <- rownames(LibrarianMeSH) 
+melt(LibrarianMeSH)
 
 
 
@@ -14,7 +39,7 @@ library(RSQLite)
 # https://datascienceplus.com/search-pubmed-with-rismed/
 # https://amunategui.github.io/pubmed-query/
 
-# Loading Testing Data -----
+# Junk playing around area -----
 
 res <- EUtilsSummary("myasthenia gravis", type="esearch", db="pubmed", datetype='pdat', mindate=1990, maxdate=2017, retmax=4000)
 
