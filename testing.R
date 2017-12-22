@@ -1,0 +1,83 @@
+# This file is for testing Medline Functions from the file RMedlineFunctions.R
+
+# load libraries ------
+
+library(RISmed)
+library(ggplot2)
+library(dplyr)
+library(RSQLite)
+
+
+
+# resources used ------
+# https://www.r-bloggers.com/how-to-search-pubmed-with-rismed-package-in-r/
+# https://datascienceplus.com/search-pubmed-with-rismed/
+# https://amunategui.github.io/pubmed-query/
+
+# Loading Testing Data -----
+
+res <- EUtilsSummary("myasthenia gravis", type="esearch", db="pubmed", datetype='pdat', mindate=1990, maxdate=2017, retmax=4000)
+
+QueryCount(res)        
+
+# Get full data
+
+rawdate<-ArticleTitle(EUtilsGet(res))
+
+year <- YearPubmed(EUtilsGet(res))
+
+auths<-Author(EUtilsGet(res))
+
+
+# plot number of articles in each year
+
+date()
+count<-table(year)
+count<-as.data.frame(count)
+names(count)<-c("Year", "Counts")
+
+ggplot(count, aes(x = year, y = Freq)) +
+  geom_bar(stat = "identity")
+
+
+# Text Mining https://www.r-bloggers.com/how-to-search-pubmed-with-rismed-package-in-r/
+
+
+
+# Okay, go back and do basic retrieval based on https://amunategui.github.io/pubmed-query/
+# This is good
+
+search_topic <- 'myasthenia gravis'
+
+search_query <- EUtilsSummary(search_topic, retmax=2500, mindate=1990, maxdate=2016)
+
+search_query_small <- EUtilsSummary(search_topic, retmax=100, mindate=1990, maxdate=2016)
+
+summary(search_query)
+
+QueryId(search_query)
+
+records<- EUtilsGet(search_query)
+
+records_small<- EUtilsGet(search_query_small)
+
+class(records)
+
+str(records)
+
+pubmed_data <- data.frame('Title'=ArticleTitle(records),'Abstract'=AbstractText(records),"Year"=YearPubmed(records),'Cited'=Cited(records))
+
+
+pubmed_data_small <- data.frame('Title'=ArticleTitle(records_small),'Abstract'=AbstractText(records_small),"Year"=YearPubmed(records_small),'Cited'=Cited(records_small))
+
+# visulize pubmed_data
+
+ggplot(pubmed_data, aes(x = Year, y = Cited)) +
+  geom_bar(stat = "identity")
+
+pubmed_data %>%
+  group_by(Year) %>%
+  summarise(sum(Cited)) 
+ggplot(pubmed_data, aes(x = Year, y = Cited)) +
+  geom_bar(stat = "identity")
+
