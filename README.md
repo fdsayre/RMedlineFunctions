@@ -23,6 +23,19 @@ Long-term future development:
 - Recommend additional MeSH and search terms based on existing set
 - Find collaborators per search set
 - Create network graphs based on various search sets
+<<<<<<< HEAD
+=======
+- Compare a set of PMIDs against a search
+- build functions to export results in various formats
+  - csv
+  - bibtex
+
+Todo:
+- expand README to include descriptions of each function and how to use them
+- add examples.R script with working example
+- create rnotebook for examples.R
+- remove playingaround file
+>>>>>>> 3a11d510387acfdb30879705863a7069939a593a
 
 
 # Function: RetrieveArticleData ----
