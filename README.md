@@ -35,10 +35,10 @@ Todo:
 - add examples.R script with working example
 - create rnotebook for examples.R
 - remove playingaround file
->>>>>>> 3a11d510387acfdb30879705863a7069939a593a
 
+# Functions
 
-# Function: RetrieveArticleData ----
+## Function: RetrieveArticleData ----
 Retrieve a set of article data in medline format (usually not approrpiate for direct analysis)
 x = 'search query'
 y = mindate, e.g. 1990
