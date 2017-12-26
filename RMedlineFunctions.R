@@ -5,11 +5,6 @@
 
 
 # function: RetrieveArticleData ------
-# retrieve list of PMIDs and then basic article metadata
-# x <- 'search query'
-# y = mindate
-# z = maxdate
-# a = maxrecords
 
 RetrieveArticleData <- function(x,y,z,a) {
   f_search_query <- EUtilsSummary(x, retmax=a, mindate=y, maxdate=z)
@@ -18,18 +13,22 @@ RetrieveArticleData <- function(x,y,z,a) {
 }
 
 # function: RetrieveArticleMetadata-----
-# from initial datafile, get metadata, including Title, Abstract, Year
-# This creates a usable dataframe for analysis
-# x = pubmed_data
+
 
 RetrieveArticleMetadata <- function(x) {
   pubmed_metadata <- data.frame('Title'=ArticleTitle(x),'Abstract'=AbstractText(x),"Year"=YearPubmed(x))
   return(pubmed_metadata)
 }
 
-# function: GraphArticlesFreqYears
-# from initial datafile, create a graph a graph of the number of articles published each year
-# x = data frame with 'Year' variable
+# function: RetrieveMostArticleMetadata-----
+
+RetrieveMostArticleMetadata <- function(x) {
+  pubmed_most_metadata <- data.frame('Title'=ArticleTitle(x),'Abstract'=AbstractText(x),"Year"=YearPubmed(x),'PubStatus'= PublicationStatus(x),"Journal"=ISOAbbreviation(x), "ID"=ArticleId(x))
+  return(pubmed_most_metadata)
+}
+
+
+# function: GraphArticlesFreqYears ---------
 
 ArticlesFreqYear <-function(x) {
   ArticlesFreqPerYear <- count(x, vars=Year)
@@ -39,7 +38,6 @@ ArticlesFreqYear <-function(x) {
 }
 
 ## Function: JournalTitles -----
-# Journal Titles
 
 JournalTitles <- function(x) {
   Jtitles <- ISOAbbreviation(x)
@@ -49,8 +47,6 @@ JournalTitles <- function(x) {
 }
 
 # Function: PMStatusByYearPlot-------
-# Create a stacked bar plot of Pubmed Status by year
-# x = pubmed datafile
 
 
 PMStatusByYearPlot <- function(x) {
@@ -61,12 +57,13 @@ PMStatusByYearPlot <- function(x) {
 }
 
 
+# In process -----------
 
-### function: Retrieve MeSH-----
+#function: Retrieve MeSH
 
 
 
-## grant ID--------
+## grant ID
 
 #Grants <- GrantID(records)
 #Grants <- as.data.frame(na.omit(Grants))
@@ -76,7 +73,7 @@ PMStatusByYearPlot <- function(x) {
 #ISO <- ISOAbbreviation(records)
 #ISO <- as.data.frame(na.omit(ISO))
 
-# PubmedStatusData-------
+# PubmedStatusData
 # Get data file with PM Status
 
 #PMStatus <- PublicationStatus(records)
@@ -93,3 +90,11 @@ PMStatusByYearPlot <- function(x) {
 # Function to compare a set of PMIDs against a search
 
 
+### Function: map country of publication ------
+
+
+### map country of affiliation
+
+## ven diagram
+
+### view search details
