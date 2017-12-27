@@ -61,7 +61,9 @@ x = data frame with 'Year' variable
 
 ## Function: JournalTitles -----
 Get Journal Titles for an initial pubmed dataset
-TODO: make this a table witha  count
+
+## Function: JournalTitlesTop5Graph ----
+Get a graph of the top 5 journal titles for a search using a article meta file
 
 ## Function: PMStatusByYearPlot-------
 Create a stacked bar plot of Pubmed Status by year
