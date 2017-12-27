@@ -30,7 +30,7 @@ sysrev_merged <- rbind(sysrevdata2012_meta, sysrevdata2013_meta, sysrevdata2014_
 
 # graphing pubs per year
 
-ArticlesFreqYear(sysrevdata20142016)
+ArticlesFreqYear(sysrevdata20142016_meta)
 
 # Look at Pubmed Status by year
 

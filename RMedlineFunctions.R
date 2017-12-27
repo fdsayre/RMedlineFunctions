@@ -37,14 +37,24 @@ ArticlesFreqYear <-function(x) {
   return(ArticlesFreqPerYear_Plot)
 }
 
-## Function: JournalTitles -----
+## Function: JournalTitlesFreq -----
 
-JournalTitles <- function(x) {
-  Jtitles <- ISOAbbreviation(x)
-  Jtitles <- as.data.frame(Jtitles)
-  return(Jtitles)
-  
+JournalTitlesFreq <- function(x) {
+  journal_freq_list <- table(unlist(x))
+  journal_freq <- as.data.frame(journal_freq_list)
+  return(journal_freq)
 }
+
+## Function: Journal5TitlesFreqGraph -----
+
+JournalTitlesTop5Graph <- function(x) {
+  journal_freq_list <- table(unlist(x))
+  journal_freq <- as.data.frame(journal_freq_list)
+  journal_freq <- top_n(journal_freq, 5)
+  journal_freq_graph <- ggplot(journal_freq, aes(x = Var1, y = Freq)) +
+    geom_bar(stat = "identity")
+  return(journal_freq_graph)}
+
 
 # Function: PMStatusByYearPlot-------
 
@@ -59,11 +69,16 @@ PMStatusByYearPlot <- function(x) {
 
 # In process -----------
 
+# Function: Top Authors Per Search
+
+# Function: Top Co-Authors Per Search
+
+
 #function: Retrieve MeSH
 
 
 
-## grant ID
+## retrieve grant IDs
 
 #Grants <- GrantID(records)
 #Grants <- as.data.frame(na.omit(Grants))
