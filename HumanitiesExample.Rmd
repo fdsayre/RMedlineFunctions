@@ -1,0 +1,25 @@
+---
+title: "RMedlineFunctions Examples"
+output: html_notebook
+---
+
+This is a first attempt at building an example using an RNoteBook. 
+
+
+```{r}
+source("RMedlineFunctions.R")
+library(RISmed)
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+query = 'humanities[ti]'
+humanities <- RetrieveArticleData(query,2000,2016,30000)
+humanities_most_meta <- RetrieveMostArticleMetadata(librarian)
+```
+
+```{r}
+ArticlesFreqYear(humanities_most_meta)
+```
+

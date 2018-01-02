@@ -30,13 +30,15 @@ ArticlesFreqYear(librarian_meta)
 
 PMStatusByYearPlot(librarian)
 
-# Journal Titles (base data file)
+# Journal Titles build data table (from: metadata file with journal name information)
 
-librarian_journals <- JournalTitlesFreq(librarian_most_meta$Journal)
+librarian_journals <- JournalTitlesFreq(librarian_most_meta)
 
 
 # Graph Top 5 Journal Titles Freq Graph (meta data file with Journal variable selected)
 
 JournalTitlesTop5Graph(librarian_most_meta)
 
-librarian_j_freq_graph
+# Get flat list of authors from a base medline fine
+
+LibrarianAuthors <- GetAuthorsFlatList(librarian)
