@@ -42,3 +42,13 @@ JournalTitlesTop5Graph(librarian_most_meta)
 # Get flat list of authors from a base medline fine
 
 LibrarianAuthors <- GetAuthorsFlatList(librarian)
+
+# Look at citation data
+
+LibCitations <- GetCitationData(librarian, librarian_most_meta)
+
+# plot citations
+
+PlotCitations(LibCitations)
+
+

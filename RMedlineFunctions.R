@@ -80,7 +80,27 @@ GetAuthorsFlatList <- function(x) {
 
 # In process -----------
 
+# Function: GetCitationData
+# x = base medline datafile
+# y = metadata file with ID = PMID
 
+GetCitationData <- function(x, y) {
+  citations <- Cited(x)
+  citationsdf <- stack(citations) # works
+  mergedmetadata <- merge(y, citationsdf, by.x = 'ID', by.y = 'ind')
+  return(mergedmetadata)
+  
+}
+
+# Function: Plot citations
+# given citation in metadata file with citations = 'values'
+
+PlotCitations <- function(x) {
+citedplot <- ggplot(x, aes(x = Year, y = values)) +
+    geom_jitter()
+  return(citedplot)
+  
+}
 
 #Function: Top Co-Authors Per Search
 
