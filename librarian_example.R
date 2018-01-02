@@ -10,19 +10,17 @@ library(dplyr)
 
 # set out query, can be anything you would search in pubmed.gov's simple search. 
 
-query = 'librarian'
+query = 'librarian[ti]'
 
 
 # get the basic article metadata from that data
 
-librarian <- RetrieveArticleData(query,2010,2016,30000)
+librarian <- RetrieveArticleData(query,2000,2016,30000)
 librarian_meta <- RetrieveArticleMetadata(librarian)
 
 # get most article metadata from that data
 
-librarian <- RetrieveArticleData(query,2010,2016,30000)
 librarian_most_meta <- RetrieveMostArticleMetadata(librarian)
-
 
 # graphing pubs per year (meta data file)
 
@@ -36,8 +34,9 @@ PMStatusByYearPlot(librarian)
 
 librarian_journals <- JournalTitlesFreq(librarian_most_meta$Journal)
 
-# Journal Top 5 Titles Freq Graph
 
-librarian_j_freq_graph <- JournalTitlesTop5Graph(librarian_most_meta$Journal)
+# Graph Top 5 Journal Titles Freq Graph (meta data file with Journal variable selected)
+
+JournalTitlesTop5Graph(librarian_most_meta)
 
 librarian_j_freq_graph

@@ -40,7 +40,7 @@ ArticlesFreqYear <-function(x) {
 ## Function: JournalTitlesFreq -----
 
 JournalTitlesFreq <- function(x) {
-  journal_freq_list <- table(unlist(x))
+  journal_freq_list <- table(unlist(x$Journal))
   journal_freq <- as.data.frame(journal_freq_list)
   return(journal_freq)
 }
@@ -48,12 +48,13 @@ JournalTitlesFreq <- function(x) {
 ## Function: Journal5TitlesFreqGraph -----
 
 JournalTitlesTop5Graph <- function(x) {
-  journal_freq_list <- table(unlist(x))
+  journal_freq_list <- table(unlist(x$Journal))
   journal_freq <- as.data.frame(journal_freq_list)
   journal_freq <- top_n(journal_freq, 5)
-  journal_freq_graph <- ggplot(journal_freq, aes(x = Var1, y = Freq)) +
+  journal_freq_plot <- ggplot(journal_freq, aes(x = Var1, y = Freq)) +
     geom_bar(stat = "identity")
-  return(journal_freq_graph)}
+  return(journal_freq_plot)
+  }
 
 
 # Function: PMStatusByYearPlot-------
@@ -67,11 +68,21 @@ PMStatusByYearPlot <- function(x) {
 }
 
 
+# Function: Top Authors Per Search ---- 
+
+GetAuthorsFlatList <- function(x) {
+  authors <- Author(x)
+  LastFirst <- sapply(authors, function(x)paste(x$LastName,x$ForeName))
+  authors<-as.data.frame(sort(table(unlist(LastFirst)), dec=TRUE))
+  return(authors)
+}
+
+
 # In process -----------
 
-# Function: Top Authors Per Search
 
-# Function: Top Co-Authors Per Search
+
+#Function: Top Co-Authors Per Search
 
 
 #function: Retrieve MeSH
