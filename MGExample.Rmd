@@ -1,5 +1,5 @@
 ---
-title: "RMedlineFunctions Examples for "myasthenia gravis"
+title: "RMedlineFunctions Examples for 'myasthenia gravis'"
 output: html_notebook
 ---
 
