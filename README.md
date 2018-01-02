@@ -68,3 +68,8 @@ Get a graph of the top 5 journal titles for a search using a article meta file
 ## Function: PMStatusByYearPlot-------
 Create a stacked bar plot of Pubmed Status by year
 x = pubmed datafile
+
+## Function: Top Authors ---- 
+Create a data frame of authors and their frequency from a base data file
+
+
