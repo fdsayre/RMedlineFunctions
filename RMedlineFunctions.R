@@ -102,6 +102,17 @@ citedplot <- ggplot(x, aes(x = Year, y = values)) +
   
 }
 
+# Function: Plot citations grouped by year as bar graph
+
+PlotCitationsBar <- function(x) {
+  
+  groupeddata <- x %>% 
+    group_by(Year)
+    citedbarplot <- ggplot(groupeddata, aes(x = Year, y = values)) +
+    geom_bar(stat = "identity")
+  return(citedbarplot)
+}
+
 #Function: Top Co-Authors Per Search
 
 

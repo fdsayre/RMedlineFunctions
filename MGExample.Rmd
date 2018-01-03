@@ -60,3 +60,9 @@ Plot citations
 PlotCitations(mg_meta_citationtoo)
 ```
 
+Bar graph of citations by year
+
+```{r}
+PlotCitationsBar(mg_meta_citationtoo)
+```
+
