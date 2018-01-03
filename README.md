@@ -6,6 +6,8 @@ This project is in early development.
 
 A use example using RNotebook can be found here: https://fdsayre.github.io/RMedlineFunctions/MGExample.nb.html 
 
+A second example using RNotebook can be found here: https://fdsayre.github.io/RMedlineFunctions/LibrarianExample.nb.html
+
 
 Currently:
 - RetrieveArticleData: Get medline data 
