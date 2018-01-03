@@ -1,8 +1,11 @@
 # RMedlineFunctions
 
-A project to build a set of reusable functions for accessing, manipulating, and visualizing data from medline/pubmed via the library RISmed in R. 
+This is a project to build a set of reusable functions for accessing, manipulating, and visualizing data from medline/pubmed via the R library RISmed (https://cran.r-project.org/web/packages/RISmed/index.html). 
 
 This project is in early development.
+
+A use example using RNotebook can be found here: https://fdsayre.github.io/RMedlineFunctions/MGExample.nb.html 
+
 
 Currently:
 - RetrieveArticleData: Get medline data 
@@ -11,30 +14,26 @@ Currently:
 - GraphArticlesFreqYears: create graph of article frequency by year
 - JournalTitles: Get list of journal titles (In process)
 - PMStatusByYearPlot: Get Status by year (In process) (from article metadata)
+- Top Authors: Get list of authors and freqency they appear in a search set
+- GetCitationData: get data on the number of times each article has been cited. 
+- PlotCitations: create a scatterplot (actually this uses jitter) of citations
+- PlotCitationsBar: Create a bar chart of cumulative citations by year of publication
 
 Future development:
-- Find top authors for a search set
 - Compare a set of PMIDs against a search
 - Map country publushed to world map
-- Map country of affiliation to world map
+- Map country of affiliation to world map? 
 
 Long-term future development: 
 - Find common MeSH across a search set (e.g. what MeSH are present in all results?)
 - Recommend additional MeSH and search terms based on existing set
 - Find collaborators per search set
 - Create network graphs based on various search sets
-<<<<<<< HEAD
-=======
 - Compare a set of PMIDs against a search
 - build functions to export results in various formats
   - csv
   - bibtex
 
-Todo:
-- expand README to include descriptions of each function and how to use them
-- add examples.R script with working example
-- create rnotebook for examples.R
-- remove playingaround file
 
 # Functions
 

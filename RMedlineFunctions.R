@@ -78,7 +78,6 @@ GetAuthorsFlatList <- function(x) {
 }
 
 
-# In process -----------
 
 # Function: GetCitationData
 # x = base medline datafile
@@ -92,7 +91,7 @@ GetCitationData <- function(x, y) {
   
 }
 
-# Function: Plot citations
+# Function: PlotCitations
 # given citation in metadata file with citations = 'values'
 
 PlotCitations <- function(x) {
@@ -102,7 +101,8 @@ citedplot <- ggplot(x, aes(x = Year, y = values)) +
   
 }
 
-# Function: Plot citations grouped by year as bar graph
+# Function: PlotCitationsBar 
+# Plot citations grouped by year as bar graph
 
 PlotCitationsBar <- function(x) {
   
@@ -113,10 +113,14 @@ PlotCitationsBar <- function(x) {
   return(citedbarplot)
 }
 
-#Function: Top Co-Authors Per Search
+
+# TO DO FUNCTIONS -----------
 
 
-#function: Retrieve MeSH
+# Function: Find Co-Authors Per Search
+
+
+# Function: Retrieve MeSH
 
 
 
@@ -132,12 +136,6 @@ PlotCitationsBar <- function(x) {
 
 # PubmedStatusData
 # Get data file with PM Status
-
-#PMStatus <- PublicationStatus(records)
-#PMStatus <- as.data.frame(PMStatus)
-
-#ggplot(PMStatus, aes(x = PMStatus)) +
-#  geom_bar()
 
 
 # Function to find common MeSH across a search set, e.g. what MeSH are present in all results?
