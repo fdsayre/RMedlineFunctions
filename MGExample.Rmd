@@ -17,6 +17,8 @@ source("RMedlineFunctions.R")
 library(RISmed)
 library(ggplot2)
 library(dplyr)
+library(rworldmap)
+
 ```
 
 Set query (can be anything you would search in pubmed.gov)
@@ -77,5 +79,43 @@ This is really the total number of citations, so not incredibly useful
 
 ```{r}
 PlotCitationsBar(article_metadata_citations)
+```
+
+Do some mapping (here, later move this into a seperate function)
+
+Map prep
+# NEED TO CHANGE ARTICLE METADATA from line 90 to something unique so as to not override that
+
+```{r}
+data_country_frame <- data.frame("ID"=ArticleId(data),"Country"=Country(data))
+article_metadata <- merge(article_metadata_citations, data_country_frame, by="ID")
+
+maping_base_data <- article_metadata %>%
+  select(Year, Country, ID, values) %>%
+  group_by(Country) %>%
+  summarise(totalcites = sum(values))
+
+malMap <- joinCountryData2Map(maping_base_data, joinCode = "NAME", nameJoinColumn = "Country", verbose = TRUE)
+
+```
+
+Fix some names
+
+```{r}
+maping_base_data$Country[maping_base_data$Country=="England"] <- "United Kingdom"
+
+maping_base_data$Country[maping_base_data$Country=="China (Republic : 1949- )"] <- "China"
+```
+
+Re-run to generate malmap
+
+```{r}
+malMap <- joinCountryData2Map(maping_base_data, joinCode = "NAME", nameJoinColumn = "Country", verbose = TRUE)
+```
+
+Still some names not working but lets map things anyway
+
+```{r}
+mapCountryData(malMap, nameColumnToPlot="totalcites", catMethod = "pretty", missingCountryCol = gray(.8), colourPalette = "heat")
 ```
 

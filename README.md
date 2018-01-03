@@ -36,6 +36,10 @@ Long-term future development:
   - csv
   - bibtex
 
+# TODO
+- delete original librarian example document and remove from github
+- delete humanities rnotebook example and remove from github
+- start working on mapping
 
 # Functions
 
