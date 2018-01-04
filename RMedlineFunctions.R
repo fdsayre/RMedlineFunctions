@@ -114,6 +114,32 @@ PlotCitationsBar <- function(x) {
 }
 
 
+# Mapping
+# x = medline data file
+# y = metadata file with PMID as "ID"
+
+MapPubsPerCountry <- function(x, y) {
+
+data_country_frame <- data.frame("ID"=ArticleId(x),"Country"=Country(x))
+
+article_metadata <- merge(y, data_country_frame, by="ID")
+  
+map_table <- table(article_metadata$Country)
+map_df <- as.data.frame(map_table)
+  
+map_df$Var1[map_df$Var1=="England"] <- "United Kingdom"
+  
+map_df$Var1[map_df$Var1=="China (Republic : 1949- )"] <- "China"
+  
+malMap <- joinCountryData2Map(map_df, joinCode = "NAME", nameJoinColumn = "Var1", verbose = TRUE)
+  
+  mapCountryData(malMap, nameColumnToPlot="Freq", catMethod = "pretty", missingCountryCol = gray(.8), colourPalette = "heat")
+  
+  
+}
+  
+
+
 # TO DO FUNCTIONS -----------
 
 

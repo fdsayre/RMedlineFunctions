@@ -99,7 +99,7 @@ malMap <- joinCountryData2Map(maping_base_data, joinCode = "NAME", nameJoinColum
 
 ```
 
-Fix some names
+Fix some names, eventually need to create a list of PMC names that are not standard and do this in bulk. For now just do the big ones. 
 
 ```{r}
 maping_base_data$Country[maping_base_data$Country=="England"] <- "United Kingdom"
@@ -117,5 +117,11 @@ Still some names not working but lets map things anyway
 
 ```{r}
 mapCountryData(malMap, nameColumnToPlot="totalcites", catMethod = "pretty", missingCountryCol = gray(.8), colourPalette = "heat")
+```
+
+Testing MapPubsPerCountry function, which counts the frequency of articles published in particular countries
+
+```{r}
+MapPubsPerCountry(data,article_metadata_citations)
 ```
 
