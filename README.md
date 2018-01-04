@@ -40,6 +40,9 @@ Long-term future development:
 - delete original librarian example document and remove from github
 - delete humanities rnotebook example and remove from github
 - start working on mapping
+- add COUNTRY to MOST metadata function
+- pull out country from author affiliation data and map against country of publication
+- transition from rworldmap to ggmap
 
 # Functions
 
