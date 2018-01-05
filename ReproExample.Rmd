@@ -3,11 +3,11 @@ title: "RMedlineFunctions Examples 'reproducibility'"
 output: html_notebook
 ---
 
-This is a first attempt at building an example of RMedlineFunctions (https://github.com/fdsayre/RMedlineFunctions) using an RNoteBook to display some results.
+This is an example of the RMedlineFunctions (https://github.com/fdsayre/RMedlineFunctions) I'm building to extend the functionality of the RISmed R package. 
 
-This example uses 'Myasthenia Gravis' as a search query. There is a fair amount of research on Myasthenia Gravis, so some parts of the script, such as adding data about citations, can take a long time to complete. 
+This example uses 'reproducibility[ti]' as a search query in Pubmed. 
 
-A shorter example looking at 'librarian[ti]' is in the works.
+These functions are in very early development and not everything (a) works, and (b) is coherent. With things like mapping I am still more focused on learning how to manipulate and display data than I necessarily am on creating a coherent rational analysis.
 
 
 Load functions and libraries
@@ -82,7 +82,7 @@ PlotCitationsBar(article_metadata_citations)
 ```
 
 
-Testing MapPubsPerCountry function, which counts the frequency of articles published in particular countries
+Testing MapPubsPerCountry function, which counts the frequency of articles published in particular countries (I believe this is country of publication NOT author affiliation. I am currently working on pulling out country info from affiliation information.)
 
 ```{r}
 MapPubsPerCountry(data,article_metadata_citations)
