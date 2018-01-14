@@ -1,7 +1,6 @@
 # These functions use the library RISmed
 # https://cran.r-project.org/web/packages/RISmed/RISmed.pdf
-# The idea is to extend RISmed by building a standard set
-# of functions for commonly done tasks
+# The idea is to extend RISmed by building a standard set of functions for searching and discplaying pubmed results
 
 
 # function: RetrieveArticleData ------
@@ -16,7 +15,7 @@ RetrieveArticleData <- function(x,y,z,a) {
 
 
 RetrieveArticleMetadata <- function(x) {
-  pubmed_metadata <- data.frame('Title'=ArticleTitle(x),'Abstract'=AbstractText(x),"Year"=YearPubmed(x))
+  pubmed_metadata <- data.frame('Title'=ArticleTitle(x),'Abstract'=AbstractText(x),"Year"=YearPubmed(x), "ID"=ArticleId(x))
   return(pubmed_metadata)
 }
 
@@ -114,7 +113,8 @@ PlotCitationsBar <- function(x) {
 }
 
 
-# Mapping
+# Function: MapPubsPerCountry
+# Maps number of publications published in a journal in a country
 # x = medline data file
 # y = metadata file with PMID as "ID"
 
@@ -138,44 +138,3 @@ malMap <- joinCountryData2Map(map_df, joinCode = "NAME", nameJoinColumn = "Var1"
   
 }
   
-
-
-# TO DO FUNCTIONS -----------
-
-
-# Function: Find Co-Authors Per Search
-
-
-# Function: Retrieve MeSH
-
-
-
-## retrieve grant IDs
-
-#Grants <- GrantID(records)
-#Grants <- as.data.frame(na.omit(Grants))
-
-
-
-#ISO <- ISOAbbreviation(records)
-#ISO <- as.data.frame(na.omit(ISO))
-
-# PubmedStatusData
-# Get data file with PM Status
-
-
-# Function to find common MeSH across a search set, e.g. what MeSH are present in all results?
-
-
-
-# Function to compare a set of PMIDs against a search
-
-
-### Function: map country of publication ------
-
-
-### map country of affiliation
-
-## ven diagram
-
-### view search details

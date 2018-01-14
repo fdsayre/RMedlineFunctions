@@ -5,7 +5,7 @@ output: html_notebook
 
 This is an example of the RMedlineFunctions (https://github.com/fdsayre/RMedlineFunctions) I'm building to extend the functionality of the RISmed R package. 
 
-This example uses 'reproducibility[ti]' as a search query in Pubmed. 
+This example uses 'reproducibility[ti] or reproducible[ti]' as a search query in Pubmed. 
 
 These functions are in very early development and not everything (a) works, and (b) is coherent. With things like mapping I am still more focused on learning how to manipulate and display data than I necessarily am on creating a coherent rational analysis.
 
