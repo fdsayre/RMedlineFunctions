@@ -55,6 +55,21 @@ PMStatusByYearPlot(data)
 ```
 
 
+Let's look at the MeSH most used in this set and then use head to look at the first rows. There will be lots of NAs from non-indexed sources and it won't be sorted in any order
+
+```{r}
+MeSH <- GetMeSH(data)
+head(MeSH)
+```
+
+Now lets filter for just MeSH descriptors (not qualifiers yet) and sort in decending order
+
+```{r}
+CountedMesh <- CountMeSH(MeSH)
+head(CountedMesh)
+```
+
+
 Get data on number of times each article has been cited and add that data to an existing article metadata file.
 
 WARNING: CITATION DATA TAKES A LONG TIME TO COLLECT

@@ -9,18 +9,6 @@ An example using RNotebook can be found here: https://fdsayre.github.io/RMedline
 A second example using RNotebook can be found here: https://fdsayre.github.io/RMedlineFunctions/LibrarianExample.nb.html
 
 
-Currently:
-- RetrieveArticleData: Get medline data 
-- RetrieveArticleMetadata: Get basic article metadata from medline data
-- RetrieveMostArticleMetadata: Get (most) article metadata from medline data
-- GraphArticlesFreqYears: create graph of article frequency by year
-- JournalTitles: Get list of journal titles (In process)
-- PMStatusByYearPlot: Get Status by year (In process) (from article metadata)
-- Top Authors: Get list of authors and freqency they appear in a search set
-- GetCitationData: get data on the number of times each article has been cited. 
-- PlotCitations: create a scatterplot (actually this uses jitter) of citations
-- PlotCitationsBar: Create a bar chart of cumulative citations by year of publication
-
 Future development:
 - Compare a set of PMIDs against a search
 - Map country publushed to world map
@@ -32,17 +20,10 @@ Long-term future development:
 - Find collaborators/co-authors in search set
 - Create network graphs based co-athorship 
 - Compare a set of PMIDs against a search for sensitivity/specificity
-- build functions to export results in various formats
+- Export results in various formats
   - csv
   - bibtex
 
-# TODO
-- delete original librarian example document and remove from github
-- delete humanities rnotebook example and remove from github
-- start working on mapping
-- add COUNTRY to MOST metadata function
-- pull out country from author affiliation data and map against country of publication
-- transition from rworldmap to ggmap
 
 # Functions
 
@@ -80,4 +61,16 @@ x = pubmed datafile
 ## Function: Top Authors ---- 
 Create a data frame of authors and their frequency from a base data file
 
+# Function: MapPubsPerCountry
+# Maps number of publications published in a journal in a country
+# x = medline data file
+# y = metadata file with PMID as "ID"
+
+# Function: GetMeSH ----------
+# Gets list of all MeSH Descriptors and Qualifiers
+# Very messy, includes redundant ID columns and lots of NAs
+
+# Function: CountMeSH
+# return a sorted list of MeSH Descriptors (no qualifiers yet) in decending order
+# x = output df from the GetMeSH function 
 

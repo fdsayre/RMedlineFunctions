@@ -138,3 +138,24 @@ malMap <- joinCountryData2Map(map_df, joinCode = "NAME", nameJoinColumn = "Var1"
   
 }
   
+# Function: GetMeSH ----------
+# Gets list of all MeSH Descriptors and Qualifiers
+# Very messy, includes redundant ID columns and lots of NAs
+
+GetMeSH <- function(x) {
+  MeSHDFList = mapply(cbind, "ID"=ArticleId(x),Mesh(x),SIMPLIFY = FALSE) 
+  MeSH_df <- ldply(MeSHDFList, data.frame) 
+  return(MeSH_df)
+}
+
+# Function: CountMeSH
+# x = output df from the GetMeSH function 
+
+CountMeSH <- function(x) {
+  MeSH_counts <- MeSH_df %>%
+    filter(Type == "Descriptor") %>%
+    count(., vars="Heading")
+  MeSH_counts_sorted <- arrange(MeSH_counts, -freq)
+  return(MeSH_counts_sorted)
+}
+
