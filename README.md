@@ -61,16 +61,15 @@ x = pubmed datafile
 ## Function: Top Authors ---- 
 Create a data frame of authors and their frequency from a base data file
 
-# Function: MapPubsPerCountry
-# Maps number of publications published in a journal in a country
-# x = medline data file
-# y = metadata file with PMID as "ID"
+## Function: MapPubsPerCountry
+Maps number of publications published in a journal in a country
+x = medline data file
+y = metadata file with PMID as "ID"
 
-# Function: GetMeSH ----------
-# Gets list of all MeSH Descriptors and Qualifiers
-# Very messy, includes redundant ID columns and lots of NAs
+## Function: GetMeSH ----------
+Gets list of all MeSH Descriptors and Qualifiers
+Very messy, includes redundant ID columns and lots of NAs
 
-# Function: CountMeSH
-# return a sorted list of MeSH Descriptors (no qualifiers yet) in decending order
-# x = output df from the GetMeSH function 
-
+## Function: CountMeSH
+Returns a sorted list of MeSH Descriptors (no qualifiers yet) in decending order
+x = output df from the GetMeSH function 
