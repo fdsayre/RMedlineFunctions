@@ -18,12 +18,14 @@ MeSH_counts <- MeSH_df %>%
   count(., vars="Heading")
 
 # sort decending order on freq
-MeSH_counts_sorted <- sort(MeSH_counts$freq, decreasing = TRUE)
-newdata <- order(MeSH_counts$freq)
-MeSH_counts_head <- head(max(MeSH_counts$freq))
+#works
+MeSH_counts_sorted <- arrange(MeSH_counts, -freq)
+
 
 # display results
+#works
 library(gridExtra)
 library(grid)
 
+MeSH_counts_head <- head(MeSH_counts_sorted)
 grid.table(MeSH_counts_head)
