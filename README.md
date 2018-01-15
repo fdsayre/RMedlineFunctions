@@ -4,19 +4,16 @@ RMedlineFunctions is intended to be a set of reusable functions for accessing, m
 
 This project is in early development.
 
-An example using RNotebook can be found here: https://fdsayre.github.io/RMedlineFunctions/MGExample.nb.html 
-
-A second example using RNotebook can be found here: https://fdsayre.github.io/RMedlineFunctions/LibrarianExample.nb.html
+An example using RNotebook can be found here: https://fdsayre.github.io/RMedlineFunctions/ReproExample.nb.html
 
 
 Future development:
 - Compare a set of PMIDs against a search
 - Map country publushed to world map
 - Map country of affiliation to world map? 
-
-Long-term future development: 
 - Find common MeSH across a search set (e.g. what MeSH are present in all results?)
-- Recommend additional MeSH and search terms based on existing set (machine learning?)
+- Find minimum MeSH/Keywords to retrieve a set of results
+- Recommend additional MeSH and search terms based on existing set
 - Find collaborators/co-authors in search set
 - Create network graphs based co-athorship 
 - Compare a set of PMIDs against a search for sensitivity/specificity
