@@ -152,7 +152,7 @@ GetMeSH <- function(x) {
 # x = output df from the GetMeSH function 
 
 CountMeSH <- function(x) {
-  MeSH_counts <- MeSH_df %>%
+  MeSH_counts <- x %>%
     filter(Type == "Descriptor") %>%
     count(., vars="Heading")
   MeSH_counts_sorted <- arrange(MeSH_counts, -freq)
