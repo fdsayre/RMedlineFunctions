@@ -29,8 +29,8 @@ the first variable sets the first year you want results from (2000), the second 
 The turn that medline data file into a data frame with most article metadata (but not all!)
 
 ```{r}
-query = 'myasthenia gravis'
-data <- RetrieveArticleData(query,2010,2018,5000)
+query = 'rituximab AND (vaccine OR vaccination)'
+data <- RetrieveArticleData(query,2000,2019,5000)
 article_metadata <- RetrieveMostArticleMetadata(data)
 ```
 
