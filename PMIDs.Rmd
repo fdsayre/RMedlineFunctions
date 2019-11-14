@@ -1,0 +1,105 @@
+---
+title: "RMedlineFunctions Examples 'reproducibility'"
+output: html_notebook
+---
+
+This is an example of the RMedlineFunctions (https://github.com/fdsayre/RMedlineFunctions) I'm building to extend the functionality of the RISmed R package. 
+
+This example uses 'reproducibility[ti] or reproducible[ti]' as a search query in Pubmed. 
+
+These functions are in very early development and not everything (a) works, and (b) is coherent. With things like mapping I am still more focused on learning how to manipulate and display data than I necessarily am on creating a coherent rational analysis.
+
+
+Load functions and libraries
+
+```{r}
+source("RMedlineFunctions.R")
+library(RISmed)
+library(ggplot2)
+library(dplyr)
+library(rworldmap)
+
+```
+
+Set query (can be anything you would search in pubmed.gov)
+retrieve medline data file
+
+the first variable sets the first year you want results from (2000), the second the last year (2016), and the third the maximum number of results to return.
+
+The turn that medline data file into a data frame with most article metadata (but not all!)
+
+```{r}
+query = "myasthenia gravis[ti]"
+data <- RetrieveArticleData(query, 2017, 2018, 500)
+article_metadata <- RetrieveMostArticleMetadata(data)
+```
+
+
+Let's take a quick look at how pubmed translated that query
+
+```{r}
+Query(data)
+```
+
+
+Create a basic bar chart shorting publication frequency by year from article metadata file (must contain at least a Year variable)
+
+```{r}
+ArticlesFreqYear(article_metadata)
+```
+
+Plot article status using medline data file
+
+```{r}
+PMStatusByYearPlot(data)
+```
+
+
+Let's look at the MeSH most used in this set and then use head to look at the first rows. There will be lots of NAs from non-indexed sources and it won't be sorted in any order
+
+```{r}
+MeSH <- GetMeSH(data)
+head(MeSH)
+```
+
+Now lets filter for just MeSH descriptors (not qualifiers yet) and sort in decending order
+
+```{r}
+CountedMesh <- CountMeSH(MeSH)
+head(CountedMesh)
+```
+
+
+Get data on number of times each article has been cited and add that data to an existing article metadata file.
+
+WARNING: CITATION DATA TAKES A LONG TIME TO COLLECT
+
+variables for function:
+x = medline data file
+y = article metadata file that has PMIDs
+
+
+```{r}
+article_metadata_citations <- GetCitationData(data, article_metadata)
+```
+
+Plot citations for each paper as a scatterplot (each dot is independent)
+
+```{r}
+PlotCitations(article_metadata_citations)
+```
+
+Bar graph of culumative citations by year
+This is really the total number of citations, so not incredibly useful
+
+```{r}
+PlotCitationsBar(article_metadata_citations)
+```
+
+
+Testing MapPubsPerCountry function, which counts the frequency of articles published in particular countries (I believe this is country of publication NOT author affiliation. I am currently working on pulling out country info from affiliation information.)
+
+```{r}
+MapPubsPerCountry(data,article_metadata_citations)
+```
+

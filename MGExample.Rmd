@@ -30,7 +30,7 @@ The turn that medline data file into a data frame with most article metadata (bu
 
 ```{r}
 query = 'myasthenia gravis'
-data <- RetrieveArticleData(query,2000,2016,30000)
+data <- RetrieveArticleData(query,2010,2018,5000)
 article_metadata <- RetrieveMostArticleMetadata(data)
 ```
 

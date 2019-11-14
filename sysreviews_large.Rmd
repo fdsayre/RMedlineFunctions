@@ -2,7 +2,6 @@
 title: "RMedlineFunctions Examples 'reproducibility'"
 output: html_notebook
 ---
-
 This is an example of the RMedlineFunctions (https://github.com/fdsayre/RMedlineFunctions) I'm building to extend the functionality of the RISmed R package. 
 
 This example uses 'reproducibility[ti] or reproducible[ti]' as a search query in Pubmed. 
@@ -31,7 +30,7 @@ The turn that medline data file into a data frame with most article metadata (bu
 
 ```{r}
 query = 'systematic review[pt]'
-data20082010 <- RetrieveArticleData(query,2008,2010,50000)
+data <- RetrieveArticleData(query,2008,2010,2000)
 article_metadata <- RetrieveMostArticleMetadata(data)
 ```
 

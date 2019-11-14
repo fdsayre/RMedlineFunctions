@@ -22,7 +22,7 @@ RetrieveArticleMetadata <- function(x) {
 # function: RetrieveMostArticleMetadata-----
 
 RetrieveMostArticleMetadata <- function(x) {
-  pubmed_most_metadata <- data.frame('Title'=ArticleTitle(x),'Abstract'=AbstractText(x),"Year"=YearPubmed(x),'PubStatus'= PublicationStatus(x),"Journal"=ISOAbbreviation(x), "ID"=ArticleId(x))
+  pubmed_most_metadata <- data.frame('Title'=ArticleTitle(x),'Abstract'=AbstractText(x),'Year'=YearPubmed(x),'PubStatus'= PublicationStatus(x),'Journal'=ISOAbbreviation(x), 'ID'=ArticleId(x))
   return(pubmed_most_metadata)
 }
 
